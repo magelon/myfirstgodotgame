@@ -45,7 +45,7 @@ position = Vector2( -32, -26.4147 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
 frames = SubResource( 5 )
 animation = "Idle"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
