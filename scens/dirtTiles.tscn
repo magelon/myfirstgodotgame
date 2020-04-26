@@ -124,3 +124,20 @@ __meta__ = {
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
+
+[node name="water" type="Sprite" parent="."]
+position = Vector2( 0, 50.2004 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
