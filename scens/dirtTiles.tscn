@@ -24,7 +24,7 @@ position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
 [node name="dirt1" type="Sprite" parent="."]
-position = Vector2( 23.6827, 0 )
+position = Vector2( 24, 0 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -41,7 +41,7 @@ position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
 [node name="dirt2" type="Sprite" parent="."]
-position = Vector2( 47.5152, 0 )
+position = Vector2( 50.0748, 0 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -57,12 +57,63 @@ visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
-[node name="dirt3" type="Sprite" parent="."]
-position = Vector2( 47.5152, 0 )
+[node name="dirt7" type="Sprite" parent="."]
+position = Vector2( 0, 24.235 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 112, 32, 16, 16 )
+region_rect = Rect2( 112, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="dirt7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dirt7/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="dirt8" type="Sprite" parent="."]
+position = Vector2( 24, 24.235 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="dirt8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dirt8/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="dirt9" type="Sprite" parent="."]
+position = Vector2( 50.0748, 24.235 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 144, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="dirt9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dirt9/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="dirt3" type="Sprite" parent="."]
+position = Vector2( 50.0748, 44.565 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 144, 32, 16, 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -75,11 +126,11 @@ position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
 [node name="dirt4" type="Sprite" parent="."]
-position = Vector2( 0, 24.1258 )
+position = Vector2( 0, 44.565 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 128, 32, 16, 16 )
+region_rect = Rect2( 112, 32, 16, 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -91,12 +142,46 @@ visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
-[node name="dirt5" type="Sprite" parent="."]
-position = Vector2( 23.6827, 24.1258 )
+[node name="dirt10" type="Sprite" parent="."]
+position = Vector2( 0, 70.6903 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 144, 32, 16, 16 )
+region_rect = Rect2( 112, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="dirt10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dirt10/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="dirt11" type="Sprite" parent="."]
+position = Vector2( 23.6827, 70.6903 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="dirt11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dirt11/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="dirt5" type="Sprite" parent="."]
+position = Vector2( 23.6827, 44.565 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 32, 16, 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -109,7 +194,7 @@ position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
 [node name="dirt6" type="Sprite" parent="."]
-position = Vector2( 47.5152, 24.1258 )
+position = Vector2( 50.0748, 70.6903 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -126,7 +211,7 @@ position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
 [node name="water" type="Sprite" parent="."]
-position = Vector2( 0, 50.2004 )
+position = Vector2( 24, 120 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -138,6 +223,992 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="water"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="water/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water2" type="Sprite" parent="."]
+position = Vector2( 24, 95.0218 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water2/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water3" type="Sprite" parent="."]
+position = Vector2( 0, 95.0218 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 112, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water3/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water4" type="Sprite" parent="."]
+position = Vector2( 0, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 112, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water4/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water5" type="Sprite" parent="."]
+position = Vector2( 0, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 112, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water5/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water6" type="Sprite" parent="."]
+position = Vector2( 24, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water6/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water7" type="Sprite" parent="."]
+position = Vector2( 48, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 144, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water7/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water8" type="Sprite" parent="."]
+position = Vector2( 48, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 144, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water8/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water9" type="Sprite" parent="."]
+position = Vector2( 48, 96 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 144, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water9/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water10" type="Sprite" parent="."]
+position = Vector2( 72, 96 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water10/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water11" type="Sprite" parent="."]
+position = Vector2( 72, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water11/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water12" type="Sprite" parent="."]
+position = Vector2( 72, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water12/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water13" type="Sprite" parent="."]
+position = Vector2( 72, 72 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water13"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water13/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water14" type="Sprite" parent="."]
+position = Vector2( 72, 72 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water14"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water14/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water15" type="Sprite" parent="."]
+position = Vector2( 72, 44.565 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water15"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water15/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water16" type="Sprite" parent="."]
+position = Vector2( 72, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water16"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water16/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water17" type="Sprite" parent="."]
+position = Vector2( 72, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water17"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water17/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water18" type="Sprite" parent="."]
+position = Vector2( 96, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 176, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water18"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water18/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water19" type="Sprite" parent="."]
+position = Vector2( 96, 24.235 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 176, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water19"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water19/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water20" type="Sprite" parent="."]
+position = Vector2( 96, 44.565 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 176, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water20"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water20/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="grass0" type="Sprite" parent="."]
+position = Vector2( 96, 72 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 176, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass0/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water22" type="Sprite" parent="."]
+position = Vector2( 96, 96 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 176, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water22"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water22/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water23" type="Sprite" parent="."]
+position = Vector2( 96, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 176, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water23"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water23/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water24" type="Sprite" parent="."]
+position = Vector2( 96, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 176, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water24"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water24/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water25" type="Sprite" parent="."]
+position = Vector2( 120, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water25"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water25/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water26" type="Sprite" parent="."]
+position = Vector2( 120, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water26"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water26/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water27" type="Sprite" parent="."]
+position = Vector2( 120, 95.0218 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water27"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water27/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water28" type="Sprite" parent="."]
+position = Vector2( 120, 70.6903 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water28"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water28/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water29" type="Sprite" parent="."]
+position = Vector2( 120, 44.565 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water29"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water29/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water30" type="Sprite" parent="."]
+position = Vector2( 120, 24.235 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water30"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water30/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water31" type="Sprite" parent="."]
+position = Vector2( 120, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water31"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water31/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water32" type="Sprite" parent="."]
+position = Vector2( 144, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water32"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water32/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water33" type="Sprite" parent="."]
+position = Vector2( 144, 24.235 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water33"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water33/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water34" type="Sprite" parent="."]
+position = Vector2( 144, 44.565 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water34"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water34/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water35" type="Sprite" parent="."]
+position = Vector2( 144, 70.6903 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water35"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water35/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water36" type="Sprite" parent="."]
+position = Vector2( 144, 96 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water36"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water36/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water37" type="Sprite" parent="."]
+position = Vector2( 144, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water37"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water37/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water38" type="Sprite" parent="."]
+position = Vector2( 144, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 208, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water38"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water38/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="grass1" type="Sprite" parent="."]
+position = Vector2( 168, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass1/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="grass2" type="Sprite" parent="."]
+position = Vector2( 192, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 240, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass2/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="rock1" type="Sprite" parent="."]
+position = Vector2( 216, 144 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 96, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="rock1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rock1/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="rock2" type="Sprite" parent="."]
+position = Vector2( 216, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="rock2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rock2/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="grass3" type="Sprite" parent="."]
+position = Vector2( 192, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 240, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass3/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="grass4" type="Sprite" parent="."]
+position = Vector2( 168, 120 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 80, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass4/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water45" type="Sprite" parent="."]
+position = Vector2( 168, 96 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water45"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water45/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water46" type="Sprite" parent="."]
+position = Vector2( 192, 96 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 240, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water46"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water46/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water47" type="Sprite" parent="."]
+position = Vector2( 216, 96 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 64, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water47"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water47/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water48" type="Sprite" parent="."]
+position = Vector2( 216, 72 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water48"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water48/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water49" type="Sprite" parent="."]
+position = Vector2( 192, 72 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 240, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water49"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water49/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water50" type="Sprite" parent="."]
+position = Vector2( 168, 70.6903 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water50"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water50/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water51" type="Sprite" parent="."]
+position = Vector2( 168, 44.565 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water51"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water51/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water52" type="Sprite" parent="."]
+position = Vector2( 192, 48 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 240, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water52"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water52/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water53" type="Sprite" parent="."]
+position = Vector2( 216, 48 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water53"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water53/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water54" type="Sprite" parent="."]
+position = Vector2( 216, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water54"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water54/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water55" type="Sprite" parent="."]
+position = Vector2( 192, 24.235 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 240, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water55"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water55/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water56" type="Sprite" parent="."]
+position = Vector2( 168, 24.235 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water56"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water56/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water57" type="Sprite" parent="."]
+position = Vector2( 168, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water57"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water57/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water58" type="Sprite" parent="."]
+position = Vector2( 192, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 240, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water58"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water58/StaticBody2D"]
+visible = false
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="water59" type="Sprite" parent="."]
+position = Vector2( 216, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 256, 0, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="water59"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water59/StaticBody2D"]
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
