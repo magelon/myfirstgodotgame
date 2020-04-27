@@ -5,21 +5,36 @@ func _physics_process(delta: float) -> void:
 	var is_jump_interrupted: =Input.is_action_just_released("move_up") and velocity.y<0.0
 	var direction:= get_direction()
 	
+	var attacking:bool
+	
 	if Input.get_action_strength("move_left"):
 		get_node("AnimatedSprite").set_flip_h(true)
-	else :
-		get_node("AnimatedSprite").set_flip_h(false)		
+	elif Input.get_action_strength("move_right"):
+		get_node("AnimatedSprite").set_flip_h(false)
+	
+	if Input.get_action_strength("attack1"):
+		 get_node("AnimatedSprite").set_animation("spinkick")
+		
 		
 	velocity=calculate_move_velocity(velocity,direction,speed,is_jump_interrupted)
 	#move and slide build in function works to smooth frame rate
-	velocity=move_and_slide(velocity, FLOOR_NORMAL)
+	velocity=move_and_slide(velocity, FLOOR_NORMAL,false)
 	
-	if velocity.x!=0.0 and velocity.y==0.0 :
-		get_node("AnimatedSprite").set_animation("walk")
-	elif velocity.y!=0.0 :
-		get_node("AnimatedSprite").set_animation("jump")
-	else :
-		get_node("AnimatedSprite").set_animation("idle")		
+	if get_node("AnimatedSprite").animation == "spinkick" and get_node("AnimatedSprite").frame ==get_node("AnimatedSprite").frames.get_frame_count("spinkick")-1:
+	
+		if velocity.x!=0.0 and velocity.y==0.0 :
+			get_node("AnimatedSprite").set_animation("walk")
+		elif velocity.y!=0.0 :
+			get_node("AnimatedSprite").set_animation("jump")
+		else :
+			get_node("AnimatedSprite").set_animation("idle")
+	elif get_node("AnimatedSprite").animation != "spinkick" :
+		if velocity.x!=0.0 and velocity.y==0.0 :
+			get_node("AnimatedSprite").set_animation("walk")
+		elif velocity.y!=0.0 :
+			get_node("AnimatedSprite").set_animation("jump")
+		else :
+			get_node("AnimatedSprite").set_animation("idle")			
 	
 func get_direction() -> Vector2:
 		return Vector2(	 
