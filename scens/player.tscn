@@ -5,6 +5,22 @@
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
 [ext_resource path="res://tiles/interactableTileSet.tres" type="TileSet" id=4]
 
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 128, 64, 64 )
@@ -36,22 +52,6 @@ region = Rect2( 384, 128, 64, 64 )
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
 region = Rect2( 448, 128, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
@@ -87,14 +87,14 @@ region = Rect2( 448, 64, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=21]
 animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "jump",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
@@ -115,7 +115,8 @@ animations = [ {
 } ]
 
 [node name="world" type="Node2D"]
-position = Vector2( 503.563, 398.6 )
+position = Vector2( 660.146, 468.707 )
+scale = Vector2( 2.55588, 2.69968 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 12.6178, 14.559 )
@@ -124,7 +125,7 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 8
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -17, 0, 0, -16, 0, 0, -15, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 0, -10, 10, 0, 65519, 30, 0, 65520, 30, 0, 65521, 30, 0, 65522, 30, 0, 65523, 30, 0, 65524, 30, 0, 65525, 30, 0, 65526, 41, 0, 65527, 28, 0, 65528, 0, 0, 65529, 1, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0 )
+tile_data = PoolIntArray( -262138, 12, 0, -262137, 0, 0, -196602, 27, 0, -196601, 30, 0, -131066, 27, 0, -131065, 30, 0, -17, 0, 0, -16, 0, 0, -15, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 0, -10, 10, 0, -65530, 27, 0, -65529, 30, 0, 65519, 30, 0, 65520, 30, 0, 65521, 30, 0, 65522, 30, 0, 65523, 30, 0, 65524, 30, 0, 65525, 30, 0, 65526, 41, 0, 65527, 28, 0, 65528, 0, 0, 65529, 1, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 6, 27, 0, 7, 30, 0, 131055, 30, 0, 131056, 30, 0, 131057, 30, 0, 131058, 30, 0, 131059, 30, 0, 131060, 30, 0, 131061, 30, 0, 131062, 30, 0, 131063, 30, 0, 131064, 30, 0, 131065, 30, 0, 131066, 30, 0, 131067, 30, 0, 131068, 30, 0, 131069, 30, 0, 131070, 30, 0, 131071, 30, 0, 65536, 30, 0, 65537, 30, 0, 65538, 30, 0, 65542, 30, 0, 65543, 30, 0 )
 
 [node name="TileMap2" type="TileMap" parent="."]
 position = Vector2( 12.6178, 14.559 )
@@ -138,12 +139,13 @@ tile_data = PoolIntArray( -262150, 3, 0, -196614, 3, 0, -131078, 3, 0, -65542, 3
 position = Vector2( -75.9563, -136.116 )
 collision_mask = 8
 script = ExtResource( 3 )
+speed = Vector2( 100, 1000 )
 gravity = 2500.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 21 )
-animation = "jump"
-frame = 1
+animation = "idle"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
