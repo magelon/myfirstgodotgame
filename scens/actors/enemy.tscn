@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://tiles/dirtTileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://scripts/player.gd" type="Script" id=3]
+[ext_resource path="res://scripts/enemy.gd" type="Script" id=2]
 [ext_resource path="res://sprites/cat/sprite_base_addon_2012_12_14 (1).png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -161,22 +161,26 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 8
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -17, 0, 0, -16, 0, 0, -15, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 0, -10, 10, 0, 65519, 30, 0, 65520, 30, 0, 65521, 30, 0, 65522, 30, 0, 65523, 30, 0, 65524, 30, 0, 65525, 30, 0, 65526, 41, 0, 65527, 28, 0, 65528, 0, 0, 65529, 1, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 2, 0, 131055, 30, 0, 131056, 30, 0, 131057, 30, 0, 131058, 30, 0, 131059, 30, 0, 131060, 30, 0, 131061, 30, 0, 131062, 30, 0, 131063, 30, 0, 131064, 30, 0, 131065, 30, 0, 131066, 30, 0, 131067, 30, 0, 131068, 30, 0, 131069, 30, 0, 131070, 30, 0, 131071, 30, 0, 65536, 30, 0, 65537, 30, 0, 65538, 30, 0, 65539, 30, 0, 65540, 30, 0, 65541, 30, 0, 65542, 30, 0, 65543, 30, 0 )
+tile_data = PoolIntArray( -17, 0, 0, -16, 0, 0, -15, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 0, -10, 10, 0, 65519, 30, 0, 65520, 30, 0, 65521, 30, 0, 65522, 30, 0, 65523, 30, 0, 65524, 30, 0, 65525, 30, 0, 65526, 41, 0, 65527, 28, 0, 65528, 0, 0, 65529, 1, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 29, 0, 7, 29, 0, 8, 29, 0, 9, 29, 0, 10, 29, 0, 11, 29, 0, 131055, 30, 0, 131056, 30, 0, 131057, 30, 0, 131058, 30, 0, 131059, 30, 0, 131060, 30, 0, 131061, 30, 0, 131062, 30, 0, 131063, 30, 0, 131064, 30, 0, 131065, 30, 0, 131066, 30, 0, 131067, 30, 0, 131068, 30, 0, 131069, 30, 0, 131070, 30, 0, 131071, 30, 0, 65536, 30, 0, 65537, 30, 0, 65538, 30, 0, 65539, 30, 0, 65540, 30, 0, 65541, 30, 0, 65542, 30, 0, 65543, 30, 0, 65544, 30, 0, 65545, 30, 0, 65546, 30, 0, 65547, 30, 0 )
 
-[node name="PlayerKinematicBody2D" type="KinematicBody2D" parent="."]
-position = Vector2( -75.9563, -136.116 )
-collision_mask = 8
-script = ExtResource( 3 )
-gravity = 2500.0
+[node name="enemyKinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 188.799, -26.7404 )
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 2 )
+speed = Vector2( 150, 1000 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="PlayerKinematicBody2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="enemyKinematicBody2D"]
+modulate = Color( 0.0352941, 0.564706, 0.94902, 1 )
 frames = SubResource( 31 )
 animation = "idle"
-frame = 3
+frame = 1
 speed_scale = 1.5
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyKinematicBody2D"]
 shape = SubResource( 32 )
 
-[node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="enemyKinematicBody2D"]
+process_parent = true
+physics_process_parent = true

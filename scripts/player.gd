@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		
 	velocity=calculate_move_velocity(velocity,direction,speed,is_jump_interrupted)
 	#move and slide build in function works to smooth frame rate
-	velocity=move_and_slide(velocity, FLOOR_NORMAL,false)
+	velocity=move_and_slide(velocity,FLOOR_NORMAL)
 	
 	if get_node("AnimatedSprite").animation == "spinkick" and get_node("AnimatedSprite").frame ==get_node("AnimatedSprite").frames.get_frame_count("spinkick")-1:
 	
