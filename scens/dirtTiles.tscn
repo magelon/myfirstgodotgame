@@ -227,7 +227,7 @@ visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
-[node name="water2" type="Sprite" parent="."]
+[node name="woodbox" type="Sprite" parent="."]
 position = Vector2( 24, 95.0218 )
 texture = ExtResource( 1 )
 centered = false
@@ -237,14 +237,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="water2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="woodbox"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="water2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="woodbox/StaticBody2D"]
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
-[node name="water3" type="Sprite" parent="."]
+[node name="ladder1" type="Sprite" parent="."]
 position = Vector2( 0, 95.0218 )
 texture = ExtResource( 1 )
 centered = false
@@ -254,14 +254,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="water3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="ladder1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="water3/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ladder1/StaticBody2D"]
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
-[node name="water4" type="Sprite" parent="."]
+[node name="ladder2" type="Sprite" parent="."]
 position = Vector2( 0, 120 )
 texture = ExtResource( 1 )
 centered = false
@@ -271,14 +271,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="water4"]
+[node name="StaticBody2D" type="StaticBody2D" parent="ladder2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="water4/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ladder2/StaticBody2D"]
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
-[node name="water5" type="Sprite" parent="."]
+[node name="ladder3" type="Sprite" parent="."]
 position = Vector2( 0, 144 )
 texture = ExtResource( 1 )
 centered = false
@@ -288,14 +288,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="water5"]
+[node name="StaticBody2D" type="StaticBody2D" parent="ladder3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="water5/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ladder3/StaticBody2D"]
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 
-[node name="water6" type="Sprite" parent="."]
+[node name="water2" type="Sprite" parent="."]
 position = Vector2( 24, 144 )
 texture = ExtResource( 1 )
 centered = false
@@ -305,9 +305,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="water6"]
+[node name="StaticBody2D" type="StaticBody2D" parent="water2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="water6/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water2/StaticBody2D"]
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
