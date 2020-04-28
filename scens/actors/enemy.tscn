@@ -1,177 +1,279 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://scripts/enemy.gd" type="Script" id=2]
+[ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/cat/sprite_base_addon_2012_12_14 (1).png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+[sub_resource type="Animation" id=1]
+resource_name = "cruch"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 192, 194 ]
+}
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
+[sub_resource type="Animation" id=2]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 64, 70 ]
+}
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
+[sub_resource type="Animation" id=3]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 96, 101 ]
+}
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 150, 153 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fistHit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 64, 64, 64 )
+[sub_resource type="Animation" id=5]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 64, 66 ]
+}
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 64, 64, 64 )
+[sub_resource type="Animation" id=6]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 3 ]
+}
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
-region = Rect2( 128, 64, 64, 64 )
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 32, 39 ]
+}
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 64, 64, 64 )
+[sub_resource type="Animation" id=8]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 16, 23 ]
+}
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 4 )
-region = Rect2( 256, 64, 64, 64 )
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "die"
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 4 )
-region = Rect2( 320, 64, 64, 64 )
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "fistcombo"
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 4 )
-region = Rect2( 384, 64, 64, 64 )
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "hurt"
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 448, 64, 64, 64 )
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle"
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 128, 64, 64 )
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "jump"
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 128, 64, 64 )
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "walk"
 
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 4 )
-region = Rect2( 128, 128, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 128, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 4 )
-region = Rect2( 256, 128, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 4 )
-region = Rect2( 320, 128, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 4 )
-region = Rect2( 384, 128, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 4 )
-region = Rect2( 448, 128, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 4 )
-region = Rect2( 128, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 4 )
-region = Rect2( 256, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 4 )
-region = Rect2( 320, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 4 )
-region = Rect2( 384, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 4 )
-region = Rect2( 448, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 4 )
-region = Rect2( 512, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 4 )
-region = Rect2( 576, 192, 64, 64 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
-[sub_resource type="SpriteFrames" id=31]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
-"loop": true,
-"name": "spinkick",
-"speed": 5.0
-} ]
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/die/node = SubResource( 9 )
+states/die/position = Vector2( 877, 221.6 )
+states/fistcombo/node = SubResource( 10 )
+states/fistcombo/position = Vector2( 208, 230.6 )
+states/hurt/node = SubResource( 11 )
+states/hurt/position = Vector2( 766, 26.6 )
+states/idle/node = SubResource( 12 )
+states/idle/position = Vector2( 313, 17 )
+states/jump/node = SubResource( 13 )
+states/jump/position = Vector2( 436, 157 )
+states/walk/node = SubResource( 14 )
+states/walk/position = Vector2( 362, 366 )
+transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "jump", "idle", SubResource( 18 ), "walk", "idle", SubResource( 19 ), "idle", "fistcombo", SubResource( 20 ), "jump", "fistcombo", SubResource( 21 ), "walk", "fistcombo", SubResource( 22 ), "fistcombo", "idle", SubResource( 23 ), "idle", "hurt", SubResource( 24 ), "idle", "die", SubResource( 25 ), "walk", "hurt", SubResource( 26 ), "walk", "die", SubResource( 27 ), "hurt", "idle", SubResource( 28 ), "jump", "hurt", SubResource( 29 ), "jump", "die", SubResource( 30 ) ]
+graph_offset = Vector2( 24, -9.4 )
 
-[sub_resource type="RectangleShape2D" id=32]
-extents = Vector2( 8.47678, 13.7021 )
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+resource_local_to_scene = false
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 2.67651, 2.04491 )
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 8.47678, 13.9024 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 10.0275, 13.9648 )
 
 [node name="enemy" type="Node2D"]
 position = Vector2( 660.146, 468.707 )
 scale = Vector2( 2.55588, 2.69968 )
 
-[node name="enemyKinematicBody2D" type="KinematicBody2D" parent="."]
-position = Vector2( 1.65939, -0.801697 )
+[node name="PlayerKinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 2.24257, -10.6703 )
 collision_layer = 2
 collision_mask = 9
-script = ExtResource( 2 )
-speed = Vector2( 150, 1000 )
+script = ExtResource( 1 )
+speed = Vector2( 50, 1000 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="enemyKinematicBody2D"]
-modulate = Color( 0.0352941, 0.564706, 0.94902, 1 )
-frames = SubResource( 31 )
-animation = "idle"
-speed_scale = 1.5
-playing = true
+[node name="Sprite" type="Sprite" parent="PlayerKinematicBody2D"]
+texture = ExtResource( 4 )
+vframes = 16
+hframes = 16
+region_rect = Rect2( 0, 0, 64, 64 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyKinematicBody2D"]
-position = Vector2( -1.91931, 8.52644 )
-shape = SubResource( 32 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerKinematicBody2D/Sprite"]
+autoplay = "idle"
+anims/cruch = SubResource( 1 )
+anims/die = SubResource( 2 )
+anims/fist = SubResource( 3 )
+anims/fistcombo = SubResource( 4 )
+anims/hurt = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/walk = SubResource( 8 )
 
-[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="enemyKinematicBody2D"]
-position = Vector2( -0.73819, 1.39778 )
-process_parent = true
-physics_process_parent = true
+[node name="AnimationTree" type="AnimationTree" parent="PlayerKinematicBody2D/Sprite"]
+tree_root = SubResource( 31 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath(".:frame")
+parameters/playback = SubResource( 32 )
+
+[node name="fistHit" type="Area2D" parent="PlayerKinematicBody2D/Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/Sprite/fistHit"]
+position = Vector2( 10.8701, 9.78645 )
+shape = SubResource( 33 )
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
+position = Vector2( -1.56329, 7.62791 )
+shape = SubResource( 34 )
+
+[node name="hurtbox" type="Area2D" parent="PlayerKinematicBody2D" groups=[
+"hurtbox",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/hurtbox"]
+position = Vector2( -1.53165, 7.59807 )
+shape = SubResource( 35 )
+[connection signal="area_entered" from="PlayerKinematicBody2D/Sprite/fistHit" to="PlayerKinematicBody2D" method="_on_fistHit_area_entered"]
