@@ -7,7 +7,7 @@ onready var fist_cooldown=cooldown.new(0.5)
 	#it will run parent physics process as well
 func _physics_process(delta: float) -> void:
 	
-	#timer
+	#timer delta is the time between every frame
 	fist_cooldown.tick(delta)
 	
 	var is_jump_interrupted: =Input.is_action_just_released("move_up") and velocity.y<0.0
@@ -23,8 +23,13 @@ func _physics_process(delta: float) -> void:
 	
 	#switch between different attacks or actions
 	if Input.get_action_strength("attack1") and fist_cooldown.is_ready():
-		 get_node("AnimatedSprite").set_animation("fist")
-	elif Input.get_action_strength("move_down"):
+		get_node("AnimatedSprite").set_animation("fist")
+		
+	#if (Input.get_action_strength("attack1") and	
+		#get_node("AnimatedSprite").animation == "fist"):
+		  #get_node("AnimatedSprite").set_animation("combofist")
+		
+	if Input.get_action_strength("move_down"):
 		get_node("AnimatedSprite").set_animation("cruch")
 		
 		
@@ -32,9 +37,13 @@ func _physics_process(delta: float) -> void:
 	#move and slide build in function works to smooth frame rate
 	velocity=move_and_slide(velocity,FLOOR_NORMAL)
 	
-	if (get_node("AnimatedSprite").animation == "fist" and 
+	if ((get_node("AnimatedSprite").animation == "fist" and 
 		get_node("AnimatedSprite").frame ==
-		get_node("AnimatedSprite").frames.get_frame_count("fist")-1):
+		get_node("AnimatedSprite").frames.get_frame_count("fist")-1) or
+		(get_node("AnimatedSprite").animation == "combofist" and 
+		get_node("AnimatedSprite").frame ==
+		get_node("AnimatedSprite").frames.get_frame_count("combofist")-1
+		)):
 			
 		threestateVelocity(velocity)
 	
