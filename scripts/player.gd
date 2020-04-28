@@ -1,18 +1,28 @@
 extends actor
 
+const cooldown=preload("res://scripts/cooldown.gd")
+
+onready var fist_cooldown=cooldown.new(0.5)
+
 	#it will run parent physics process as well
 func _physics_process(delta: float) -> void:
+	
+	#timer
+	fist_cooldown.tick(delta)
+	
 	var is_jump_interrupted: =Input.is_action_just_released("move_up") and velocity.y<0.0
 	var direction:= get_direction()
 	
 	var attacking:bool
 	
+	#facing the right direction
 	if Input.get_action_strength("move_left"):
 		get_node("AnimatedSprite").set_flip_h(true)
 	elif Input.get_action_strength("move_right"):
 		get_node("AnimatedSprite").set_flip_h(false)
 	
-	if Input.get_action_strength("attack1"):
+	#switch between different attacks or actions
+	if Input.get_action_strength("attack1") and fist_cooldown.is_ready():
 		 get_node("AnimatedSprite").set_animation("fist")
 	elif Input.get_action_strength("move_down"):
 		get_node("AnimatedSprite").set_animation("cruch")
@@ -23,7 +33,9 @@ func _physics_process(delta: float) -> void:
 	velocity=move_and_slide(velocity,FLOOR_NORMAL)
 	
 	if (get_node("AnimatedSprite").animation == "fist" and 
-		get_node("AnimatedSprite").frame ==get_node("AnimatedSprite").frames.get_frame_count("fist")-1):
+		get_node("AnimatedSprite").frame ==
+		get_node("AnimatedSprite").frames.get_frame_count("fist")-1):
+			
 		threestateVelocity(velocity)
 	
 	elif get_node("AnimatedSprite").animation != "fist":
