@@ -2,7 +2,7 @@ extends actor
 
 const cooldown=preload("res://scripts/cooldown.gd")
 
-onready var fist_cooldown=cooldown.new(1.0)
+onready var fist_cooldown=cooldown.new(0.5)
 
 var state_machine
 
@@ -35,10 +35,8 @@ func _process(delta: float) -> void:
 	velocity=move_and_slide(velocity,FLOOR_NORMAL)
 	
 	#switch between different attacks or actions
-	if Input.is_action_just_pressed("attack1") :
-			state_machine.travel("fist")
-			if Input.is_action_just_pressed("attack1"):# and fist_cooldown.is_ready():
-				state_machine.travel("fistcombo")
+	if Input.is_action_just_pressed("attack1") and fist_cooldown.is_ready():
+			state_machine.travel("fistcombo")
 	elif velocity.x!=0.0 and velocity.y==0.0 :
 			state_machine.travel("walk")
 	elif velocity.y!=0.0 :

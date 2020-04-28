@@ -164,7 +164,6 @@ speed = Vector2( 150, 1000 )
 modulate = Color( 0.0352941, 0.564706, 0.94902, 1 )
 frames = SubResource( 31 )
 animation = "idle"
-frame = 3
 speed_scale = 1.5
 playing = true
 

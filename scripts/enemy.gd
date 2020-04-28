@@ -11,7 +11,7 @@ func _ready() -> void:
 	velocity.x=-speed.x
 
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 
 	velocity.y+=gravity*get_physics_process_delta_time()
 	
