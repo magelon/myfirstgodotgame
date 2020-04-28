@@ -13,35 +13,40 @@ func _physics_process(delta: float) -> void:
 		get_node("AnimatedSprite").set_flip_h(false)
 	
 	if Input.get_action_strength("attack1"):
-		 get_node("AnimatedSprite").set_animation("spinkick")
+		 get_node("AnimatedSprite").set_animation("fist")
+	elif Input.get_action_strength("move_down"):
+		get_node("AnimatedSprite").set_animation("cruch")
 		
 		
 	velocity=calculate_move_velocity(velocity,direction,speed,is_jump_interrupted)
 	#move and slide build in function works to smooth frame rate
 	velocity=move_and_slide(velocity,FLOOR_NORMAL)
 	
-	if get_node("AnimatedSprite").animation == "spinkick" and get_node("AnimatedSprite").frame ==get_node("AnimatedSprite").frames.get_frame_count("spinkick")-1:
+	if (get_node("AnimatedSprite").animation == "fist" and 
+		get_node("AnimatedSprite").frame ==get_node("AnimatedSprite").frames.get_frame_count("fist")-1):
+		threestateVelocity(velocity)
 	
-		if velocity.x!=0.0 and velocity.y==0.0 :
-			get_node("AnimatedSprite").set_animation("walk")
-		elif velocity.y!=0.0 :
-			get_node("AnimatedSprite").set_animation("jump")
-		else :
-			get_node("AnimatedSprite").set_animation("idle")
-	elif get_node("AnimatedSprite").animation != "spinkick" :
-		if velocity.x!=0.0 and velocity.y==0.0 :
-			get_node("AnimatedSprite").set_animation("walk")
-		elif velocity.y!=0.0 :
-			get_node("AnimatedSprite").set_animation("jump")
-		else :
-			get_node("AnimatedSprite").set_animation("idle")			
+	elif get_node("AnimatedSprite").animation != "fist":
+		threestateVelocity(velocity)
 	
+			
 func get_direction() -> Vector2:
 		return Vector2(	 
 				#get input action function return 1 if get action
 				Input.get_action_strength("move_right")-Input.get_action_strength("move_left"),
 				-1.0 if Input.is_action_just_pressed("move_up") and is_on_floor() else 1.0 
 		)
+
+#this function switch between 3 states animation in screten condition
+func threestateVelocity(velocity:Vector2) -> void:
+		if velocity.x!=0.0 and velocity.y==0.0 :
+			get_node("AnimatedSprite").set_animation("walk")
+		elif velocity.y!=0.0 :
+			get_node("AnimatedSprite").set_animation("jump")
+		elif (velocity.x==0.0 and velocity.y==0.0 and 
+			  Input.get_action_strength("move_down")!=1):
+			get_node("AnimatedSprite").set_animation("idle")
+	
 
 func calculate_move_velocity(
 	linear_velocity: Vector2,
