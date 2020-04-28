@@ -2,10 +2,17 @@ extends actor
 
 const cooldown=preload("res://scripts/cooldown.gd")
 
-onready var fist_cooldown=cooldown.new(0.5)
+onready var fist_cooldown=cooldown.new(1.0)
+
+var state_machine
+
+func _ready() -> void:
+	state_machine=$Sprite/AnimationTree.get("parameters/playback")
+	state_machine.start("idle")
+
 
 	#it will run parent physics process as well
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	
 	#timer delta is the time between every frame
 	fist_cooldown.tick(delta)
@@ -13,44 +20,33 @@ func _physics_process(delta: float) -> void:
 	var is_jump_interrupted: =Input.is_action_just_released("move_up") and velocity.y<0.0
 	var direction:= get_direction()
 	
-	var attacking:bool
+	#get current animation
+	#var current=state_machine.get_current_node()
 	
 	#facing the right direction
 	if Input.get_action_strength("move_left"):
-		get_node("AnimatedSprite").set_flip_h(true)
+		get_node("Sprite").set_flip_h(true)
 	elif Input.get_action_strength("move_right"):
-		get_node("AnimatedSprite").set_flip_h(false)
-	
-	#switch between different attacks or actions
-	if Input.get_action_strength("attack1") and fist_cooldown.is_ready():
-		get_node("AnimatedSprite").set_animation("fist")
-		
-	#if (Input.get_action_strength("attack1") and	
-		#get_node("AnimatedSprite").animation == "fist"):
-		  #get_node("AnimatedSprite").set_animation("combofist")
-		
-	if Input.get_action_strength("move_down"):
-		get_node("AnimatedSprite").set_animation("cruch")
+		get_node("Sprite").set_flip_h(false)
 		
 		
 	velocity=calculate_move_velocity(velocity,direction,speed,is_jump_interrupted)
 	#move and slide build in function works to smooth frame rate
 	velocity=move_and_slide(velocity,FLOOR_NORMAL)
 	
-	if ((get_node("AnimatedSprite").animation == "fist" and 
-		get_node("AnimatedSprite").frame ==
-		get_node("AnimatedSprite").frames.get_frame_count("fist")-1) or
-		(get_node("AnimatedSprite").animation == "combofist" and 
-		get_node("AnimatedSprite").frame ==
-		get_node("AnimatedSprite").frames.get_frame_count("combofist")-1
-		)):
-			
-		threestateVelocity(velocity)
+	#switch between different attacks or actions
+	if Input.is_action_just_pressed("attack1") :
+			state_machine.travel("fist")
+			if Input.is_action_just_pressed("attack1"):# and fist_cooldown.is_ready():
+				state_machine.travel("fistcombo")
+	elif velocity.x!=0.0 and velocity.y==0.0 :
+			state_machine.travel("walk")
+	elif velocity.y!=0.0 :
+			state_machine.travel("jump")
+	elif (velocity.x==0.0 and velocity.y==0.0 and 
+			Input.get_action_strength("move_down")!=1):
+			state_machine.travel("idle")	
 	
-	elif get_node("AnimatedSprite").animation != "fist":
-		threestateVelocity(velocity)
-	
-			
 func get_direction() -> Vector2:
 		return Vector2(	 
 				#get input action function return 1 if get action
@@ -58,15 +54,6 @@ func get_direction() -> Vector2:
 				-1.0 if Input.is_action_just_pressed("move_up") and is_on_floor() else 1.0 
 		)
 
-#this function switch between 3 states animation in screten condition
-func threestateVelocity(velocity:Vector2) -> void:
-		if velocity.x!=0.0 and velocity.y==0.0 :
-			get_node("AnimatedSprite").set_animation("walk")
-		elif velocity.y!=0.0 :
-			get_node("AnimatedSprite").set_animation("jump")
-		elif (velocity.x==0.0 and velocity.y==0.0 and 
-			  Input.get_action_strength("move_down")!=1):
-			get_node("AnimatedSprite").set_animation("idle")
 	
 
 func calculate_move_velocity(
