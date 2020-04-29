@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
 [ext_resource path="res://sprites/cat/sprite_base_addon_2012_12_14 (1).png" type="Texture" id=4]
@@ -195,6 +195,8 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
 [sub_resource type="AnimationNodeStateMachine" id=31]
 states/die/node = SubResource( 9 )
 states/die/position = Vector2( 877, 221.6 )
@@ -208,8 +210,8 @@ states/jump/node = SubResource( 13 )
 states/jump/position = Vector2( 436, 157 )
 states/walk/node = SubResource( 14 )
 states/walk/position = Vector2( 362, 366 )
-transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "jump", "idle", SubResource( 18 ), "walk", "idle", SubResource( 19 ), "idle", "fistcombo", SubResource( 20 ), "jump", "fistcombo", SubResource( 21 ), "walk", "fistcombo", SubResource( 22 ), "fistcombo", "idle", SubResource( 23 ), "idle", "hurt", SubResource( 24 ), "idle", "die", SubResource( 25 ), "walk", "hurt", SubResource( 26 ), "walk", "die", SubResource( 27 ), "hurt", "idle", SubResource( 28 ), "jump", "hurt", SubResource( 29 ), "jump", "die", SubResource( 30 ) ]
-graph_offset = Vector2( 24, -9.4 )
+transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "jump", "idle", SubResource( 18 ), "walk", "idle", SubResource( 19 ), "idle", "fistcombo", SubResource( 20 ), "jump", "fistcombo", SubResource( 21 ), "walk", "fistcombo", SubResource( 22 ), "fistcombo", "idle", SubResource( 23 ), "idle", "hurt", SubResource( 24 ), "idle", "die", SubResource( 25 ), "walk", "hurt", SubResource( 26 ), "walk", "die", SubResource( 27 ), "hurt", "idle", SubResource( 28 ), "jump", "hurt", SubResource( 29 ), "jump", "die", SubResource( 30 ), "hurt", "die", SubResource( 36 ) ]
+graph_offset = Vector2( 101, 0.600006 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 resource_local_to_scene = false
@@ -238,6 +240,7 @@ speed = Vector2( 50, 1000 )
 texture = ExtResource( 4 )
 vframes = 16
 hframes = 16
+frame = 194
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerKinematicBody2D/Sprite"]

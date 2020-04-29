@@ -32,7 +32,9 @@ func _process(delta: float) -> void:
 			state_machine.travel("walk")
 	elif velocity.y!=0.0 :
 			state_machine.travel("jump")
-	else :
+	elif health<=0:
+			state_machine.travel("die")	
+	elif velocity.x==0.0 and velocity.y==0.0 :
 			state_machine.travel("idle")	
 
 func _on_fistHit_area_entered(area: Area2D) -> void:
@@ -42,5 +44,13 @@ func _on_fistHit_area_entered(area: Area2D) -> void:
 func take_damage() -> void:
 	print("hurt")
 	health=health-1
+	print(health)
 	state_machine.travel("hurt")
-	velocity=Vector2.ZERO
+	if fist_cooldown.is_ready() and health>0:
+		velocity.x=-speed.x
+	else:
+		velocity=Vector2.ZERO
+	if health<=0:
+		print("die")
+		state_machine.travel("die")	
+	

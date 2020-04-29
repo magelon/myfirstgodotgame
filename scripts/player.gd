@@ -44,6 +44,8 @@ func _process(delta: float) -> void:
 	elif (velocity.x==0.0 and velocity.y==0.0 and 
 			Input.get_action_strength("move_down")!=1):
 			state_machine.travel("idle")	
+	elif health<=0:
+			state_machine.travel("die")	
 	
 func get_direction() -> Vector2:
 		return Vector2(	 
