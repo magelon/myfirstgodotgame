@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 	
 	#switch between different attacks or actions
 	if Input.is_action_just_pressed("attack1") and fist_cooldown.is_ready():
+			print("hp: "+str(health))
 			state_machine.travel("fistcombo")
 	elif Input.get_action_strength("move_down")==1:
 			state_machine.travel("die")	
