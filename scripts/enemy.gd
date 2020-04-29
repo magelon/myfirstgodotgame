@@ -2,7 +2,7 @@ extends "res://scripts/actor.gd"
 
 const cooldown=preload("res://scripts/cooldown.gd")
 
-onready var fist_cooldown=cooldown.new(0.5)
+onready var fist_cooldown=cooldown.new(1.5)
 
 var state_machine
 
