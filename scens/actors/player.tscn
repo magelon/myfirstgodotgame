@@ -218,10 +218,10 @@ resource_local_to_scene = false
 extents = Vector2( 3.93967, 3.05577 )
 
 [sub_resource type="RectangleShape2D" id=35]
-extents = Vector2( 8.47678, 13.9024 )
+extents = Vector2( 6.00354, 12.388 )
 
 [sub_resource type="RectangleShape2D" id=36]
-extents = Vector2( 11.0016, 13.9648 )
+extents = Vector2( 11.5463, 13.9648 )
 
 [node name="player" type="Node2D"]
 position = Vector2( 660.146, 468.707 )
@@ -265,8 +265,8 @@ position = Vector2( 12.6815, 10.3217 )
 shape = SubResource( 34 )
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
-position = Vector2( -1.56329, 7.62791 )
+[node name="CollisionShape2DplayerBody" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
+position = Vector2( -1.66125, 9.48254 )
 shape = SubResource( 35 )
 
 [node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
@@ -278,6 +278,6 @@ current = true
 ]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/hurtbox"]
-position = Vector2( -2.0127, 7.93962 )
+position = Vector2( -2.69837, 8.12506 )
 shape = SubResource( 36 )
 [connection signal="area_entered" from="PlayerKinematicBody2D/Sprite/fistHit" to="PlayerKinematicBody2D" method="_on_fistHit_area_entered"]

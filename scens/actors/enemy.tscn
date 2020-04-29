@@ -195,9 +195,9 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachine" id=31]
+[sub_resource type="AnimationNodeStateMachine" id=32]
 states/die/node = SubResource( 9 )
 states/die/position = Vector2( 877, 221.6 )
 states/fistcombo/node = SubResource( 10 )
@@ -210,19 +210,19 @@ states/jump/node = SubResource( 13 )
 states/jump/position = Vector2( 436, 157 )
 states/walk/node = SubResource( 14 )
 states/walk/position = Vector2( 362, 366 )
-transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "jump", "idle", SubResource( 18 ), "walk", "idle", SubResource( 19 ), "idle", "fistcombo", SubResource( 20 ), "jump", "fistcombo", SubResource( 21 ), "walk", "fistcombo", SubResource( 22 ), "fistcombo", "idle", SubResource( 23 ), "idle", "hurt", SubResource( 24 ), "idle", "die", SubResource( 25 ), "walk", "hurt", SubResource( 26 ), "walk", "die", SubResource( 27 ), "hurt", "idle", SubResource( 28 ), "jump", "hurt", SubResource( 29 ), "jump", "die", SubResource( 30 ), "hurt", "die", SubResource( 36 ) ]
-graph_offset = Vector2( 101, 0.600006 )
+transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "jump", "idle", SubResource( 18 ), "walk", "idle", SubResource( 19 ), "idle", "fistcombo", SubResource( 20 ), "jump", "fistcombo", SubResource( 21 ), "walk", "fistcombo", SubResource( 22 ), "fistcombo", "idle", SubResource( 23 ), "idle", "hurt", SubResource( 24 ), "idle", "die", SubResource( 25 ), "walk", "hurt", SubResource( 26 ), "walk", "die", SubResource( 27 ), "hurt", "idle", SubResource( 28 ), "jump", "hurt", SubResource( 29 ), "jump", "die", SubResource( 30 ), "hurt", "die", SubResource( 31 ) ]
+graph_offset = Vector2( 80, -31.4 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 resource_local_to_scene = false
 
-[sub_resource type="RectangleShape2D" id=33]
+[sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 2.67651, 2.04491 )
 
-[sub_resource type="RectangleShape2D" id=34]
-extents = Vector2( 8.47678, 13.9024 )
-
 [sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 5.72034, 12.4757 )
+
+[sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 10.0275, 13.9648 )
 
 [node name="enemy" type="Node2D"]
@@ -240,8 +240,16 @@ speed = Vector2( 50, 1000 )
 texture = ExtResource( 4 )
 vframes = 16
 hframes = 16
-frame = 194
+frame = 2
 region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="eyeRay" type="RayCast2D" parent="PlayerKinematicBody2D/Sprite"]
+position = Vector2( 7.72995, 3.34372 )
+scale = Vector2( 1, 0.2 )
+enabled = true
+cast_to = Vector2( 1, 0 )
+collision_mask = 9
+collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerKinematicBody2D/Sprite"]
 autoplay = "idle"
@@ -255,28 +263,31 @@ anims/jump = SubResource( 7 )
 anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerKinematicBody2D/Sprite"]
-tree_root = SubResource( 31 )
+tree_root = SubResource( 32 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 root_motion_track = NodePath(".:frame")
-parameters/playback = SubResource( 32 )
+parameters/playback = SubResource( 33 )
 
 [node name="fistHit" type="Area2D" parent="PlayerKinematicBody2D/Sprite"]
+position = Vector2( -0.00161743, -1.11122 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/Sprite/fistHit"]
 position = Vector2( 10.8701, 9.78645 )
-shape = SubResource( 33 )
+shape = SubResource( 34 )
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
-position = Vector2( -1.56329, 7.62791 )
-shape = SubResource( 34 )
+[node name="CollisionShape2Dcatbody" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
+position = Vector2( -2.34689, 9.57527 )
+shape = SubResource( 35 )
 
 [node name="hurtbox" type="Area2D" parent="PlayerKinematicBody2D" groups=[
 "hurtbox",
 ]]
+position = Vector2( 0.391815, -0.0927277 )
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/hurtbox"]
-position = Vector2( -1.53165, 7.59807 )
-shape = SubResource( 35 )
+position = Vector2( -3.19678, 8.52538 )
+shape = SubResource( 36 )
 [connection signal="area_entered" from="PlayerKinematicBody2D/Sprite/fistHit" to="PlayerKinematicBody2D" method="_on_fistHit_area_entered"]

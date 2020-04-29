@@ -6,16 +6,24 @@ onready var fist_cooldown=cooldown.new(1.5)
 
 var state_machine
 
+onready var eyeRay=get_node("Sprite").get_node("eyeRay")
+
+
 func _ready() -> void:
 	set_physics_process(false)
 	velocity.x=-speed.x
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
 
-
 func _process(delta: float) -> void:
 	fist_cooldown.tick(delta)
 	velocity.y+=gravity*get_physics_process_delta_time()
+	
+	#raycast2d eye ray
+	if eyeRay.is_colliding():
+		print("collid")
+		state_machine.travel("fistcombo")
+		
 	
 	if is_on_wall() :
 		velocity.x *=-1.0
