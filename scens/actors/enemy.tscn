@@ -249,7 +249,6 @@ enabled = true
 exclude_parent = false
 cast_to = Vector2( 1, 0 )
 collision_mask = 9
-collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerKinematicBody2D/Sprite"]
 autoplay = "idle"

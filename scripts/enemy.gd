@@ -6,6 +6,7 @@ onready var fist_cooldown=cooldown.new(1.5)
 
 var state_machine
 var attacking
+var direction
 
 onready var eyeRay=get_node("Sprite").get_node("eyeRay")
 
@@ -22,14 +23,20 @@ func _process(delta: float) -> void:
 	velocity.y+=gravity*get_physics_process_delta_time()
 	
 	#raycast2d eye ray
-	if eyeRay.is_colliding() and fist_cooldown.is_ready():
-		print("collid")
+	if (eyeRay.is_colliding() 
+		and fist_cooldown.is_ready() 
+		and eyeRay.get_collider().get_name()
+		=="collidPlayerKinematicBoday2D"):
+		print("player detected start attacking")	
 		attacking=true
 		velocity=Vector2.ZERO
 		state_machine.travel("fistcombo")
-	#else:
-		#velocity.x=-speed.x		
-		
+	else :
+		attacking=false
+		if 	direction=="right":
+			velocity.x=+speed.x
+		else:
+			velocity.x=-speed.x	
 	
 	if is_on_wall() :
 		velocity.x *=-1.0
@@ -37,9 +44,11 @@ func _process(delta: float) -> void:
 	
 	if velocity.x>0.0:
 		get_node("Sprite").set_scale(Vector2(1,1))
+		direction="right"
 	
 	if velocity.x<0.0:
 		get_node("Sprite").set_scale(Vector2(-1,1))
+		direction="left"
 	
 	if !attacking:
 		if velocity.x!=0.0 and velocity.y==0.0 :
