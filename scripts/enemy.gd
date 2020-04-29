@@ -5,6 +5,7 @@ const cooldown=preload("res://scripts/cooldown.gd")
 onready var fist_cooldown=cooldown.new(1.5)
 
 var state_machine
+var attacking
 
 onready var eyeRay=get_node("Sprite").get_node("eyeRay")
 
@@ -14,15 +15,20 @@ func _ready() -> void:
 	velocity.x=-speed.x
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
+	attacking=false
 
 func _process(delta: float) -> void:
 	fist_cooldown.tick(delta)
 	velocity.y+=gravity*get_physics_process_delta_time()
 	
 	#raycast2d eye ray
-	if eyeRay.is_colliding():
+	if eyeRay.is_colliding() and fist_cooldown.is_ready():
 		print("collid")
+		attacking=true
+		velocity=Vector2.ZERO
 		state_machine.travel("fistcombo")
+	#else:
+		#velocity.x=-speed.x		
 		
 	
 	if is_on_wall() :
@@ -30,24 +36,24 @@ func _process(delta: float) -> void:
 	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y	
 	
 	if velocity.x>0.0:
-		get_node("Sprite").set_flip_h(false)
+		get_node("Sprite").set_scale(Vector2(1,1))
 	
 	if velocity.x<0.0:
-		get_node("Sprite").set_flip_h(true)
+		get_node("Sprite").set_scale(Vector2(-1,1))
 	
-	
-	if velocity.x!=0.0 and velocity.y==0.0 :
-			state_machine.travel("walk")
-	elif velocity.y!=0.0 :
-			state_machine.travel("jump")
-	elif health<=0:
-			state_machine.travel("die")	
-	elif velocity.x==0.0 and velocity.y==0.0 :
-			state_machine.travel("idle")	
+	if !attacking:
+		if velocity.x!=0.0 and velocity.y==0.0 :
+				state_machine.travel("walk")
+		elif velocity.y!=0.0 :
+				state_machine.travel("jump")
+		elif health<=0:
+				state_machine.travel("die")	
+		elif velocity.x==0.0 and velocity.y==0.0 :
+				state_machine.travel("idle")	
 
 func _on_fistHit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
-		area.take_damage()
+		area.get_parent().take_damage()
 
 func take_damage() -> void:
 	print("hurt")

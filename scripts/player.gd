@@ -25,9 +25,9 @@ func _process(delta: float) -> void:
 	
 	#facing the right direction
 	if Input.get_action_strength("move_left"):
-		get_node("Sprite").set_flip_h(true)
+		get_node("Sprite").set_scale(Vector2(-1,1))
 	elif Input.get_action_strength("move_right"):
-		get_node("Sprite").set_flip_h(false)
+		get_node("Sprite").set_scale(Vector2(1,1))
 		
 		
 	velocity=calculate_move_velocity(velocity,direction,speed,is_jump_interrupted)
@@ -45,7 +45,8 @@ func _process(delta: float) -> void:
 	elif velocity.y!=0.0 :
 			state_machine.travel("jump")
 	elif (velocity.x==0.0 and velocity.y==0.0 and 
-			Input.get_action_strength("move_down")!=1):
+			Input.get_action_strength("move_down")!=1
+			and health>0):
 			state_machine.travel("idle")	
 	elif health<=0:
 			state_machine.travel("die")	
@@ -80,5 +81,10 @@ func _on_fistHit_area_entered(area: Area2D) -> void:
 		area.get_parent().take_damage()
 
 func take_damage() -> void:
+	print("player take damage")
 	health=health-1
 	state_machine.travel("hurt")
+	if health<=0:
+		print("player died")
+		velocity=Vector2.ZERO
+		state_machine.travel("die")	

@@ -223,7 +223,7 @@ extents = Vector2( 2.67651, 2.04491 )
 extents = Vector2( 5.72034, 12.4757 )
 
 [sub_resource type="RectangleShape2D" id=36]
-extents = Vector2( 10.0275, 13.9648 )
+extents = Vector2( 11.9431, 13.9648 )
 
 [node name="enemy" type="Node2D"]
 position = Vector2( 660.146, 468.707 )
@@ -240,13 +240,13 @@ speed = Vector2( 50, 1000 )
 texture = ExtResource( 4 )
 vframes = 16
 hframes = 16
-frame = 2
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="eyeRay" type="RayCast2D" parent="PlayerKinematicBody2D/Sprite"]
 position = Vector2( 7.72995, 3.34372 )
 scale = Vector2( 1, 0.2 )
 enabled = true
+exclude_parent = false
 cast_to = Vector2( 1, 0 )
 collision_mask = 9
 collide_with_areas = true
@@ -270,7 +270,8 @@ root_motion_track = NodePath(".:frame")
 parameters/playback = SubResource( 33 )
 
 [node name="fistHit" type="Area2D" parent="PlayerKinematicBody2D/Sprite"]
-position = Vector2( -0.00161743, -1.11122 )
+position = Vector2( -0.355225, -1.02753 )
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/Sprite/fistHit"]
 position = Vector2( 10.8701, 9.78645 )
@@ -284,10 +285,10 @@ shape = SubResource( 35 )
 [node name="hurtbox" type="Area2D" parent="PlayerKinematicBody2D" groups=[
 "hurtbox",
 ]]
-position = Vector2( 0.391815, -0.0927277 )
+position = Vector2( 1.54099, -0.260101 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/hurtbox"]
-position = Vector2( -3.19678, 8.52538 )
+position = Vector2( -3.90395, 8.10694 )
 shape = SubResource( 36 )
 [connection signal="area_entered" from="PlayerKinematicBody2D/Sprite/fistHit" to="PlayerKinematicBody2D" method="_on_fistHit_area_entered"]
