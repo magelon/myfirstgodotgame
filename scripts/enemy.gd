@@ -3,11 +3,11 @@ extends "res://scripts/actor.gd"
 const cooldown=preload("res://scripts/cooldown.gd")
 
 onready var fist_cooldown=cooldown.new(1.5)
-onready var freeze_cooldown=cooldown.new(1.0)
 
 var state_machine
 var attacking
-var freeze
+#possible danger
+var alert
 var direction
 
 onready var eyeRay=get_node("Sprite").get_node("eyeRay")
@@ -19,7 +19,7 @@ func _ready() -> void:
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
 	attacking=false
-	freeze=false
+	alert=false
 
 func _process(delta: float) -> void:
 	fist_cooldown.tick(delta)
@@ -33,22 +33,23 @@ func _process(delta: float) -> void:
 		get_node("Sprite").set_scale(Vector2(-1,1))
 		direction="left"
 	
-	#patrol function	
+	#patrol function
 	enemyPatrol()
 	
 	if is_on_wall() :
 		velocity.x *=-1.0
-	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y	
+	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y
 	
+	#if enemy is not attacking
 	if !attacking:
 		if velocity.x!=0.0 and velocity.y==0.0 :
 				state_machine.travel("walk")
 		elif velocity.y!=0.0 :
 				state_machine.travel("jump")
 		elif health<=0:
-				state_machine.travel("die")	
+				state_machine.travel("die")
 		elif velocity.x==0.0 and velocity.y==0.0 :
-				state_machine.travel("idle")	
+				state_machine.travel("idle")
 
 func _on_fistHit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
@@ -57,13 +58,14 @@ func _on_fistHit_area_entered(area: Area2D) -> void:
 func enemyPatrol() -> void:
 	#raycast2d eye ray
 	#if enemy still alive
-	if (health>0):
+	if (health>0 and !alert):
 		# if enemy see something
 		if (eyeRay.is_colliding()):
 			print("seen something! it's"+str(eyeRay.get_collider().get_name()))
 			#stop and check
 			velocity=Vector2.ZERO
 			if(eyeRay.get_collider().get_name()=="PlayerKinematicBody2D"):
+				alert=false
 				print("player detected!!")
 				#if enemy fist cooldown is ready
 				if fist_cooldown.is_ready():
@@ -89,23 +91,33 @@ func enemyPatrol() -> void:
 				velocity.x=+speed.x
 			else:
 				velocity.x=-speed.x
-
+	#something hit me
+	elif (health>0 and alert):
+		#must be somthing at back
+		velocity=Vector2.ZERO
+		if (!eyeRay.is_colliding() 
+			or (eyeRay.is_colliding() 
+			and eyeRay.get_collider().get_name()!="PlayerKinematicBody2D")):
+			#turn arround if face left turn right otherwise flip
+			if direction=="left":
+				velocity.x=+speed.x
+				alert=false
+			else:
+				velocity.x=-speed.x
+				alert=false
+				
 func take_damage() -> void:
 	print("Got hurt!")
 	health=health-1
 	print(health)
 	state_machine.travel("hurt")
 	#freeze for a secon
-	freeze=true
-	freeze_cooldown.is_ready()
+	alert=true
+	velocity=Vector2.ZERO
 	#then looking for player left or right
 	if health<=0:
 		print("die")
 		state_machine.travel("die")
 		
-func gotHit()-> void:
-	if freeze and freeze_cooldown.is_ready():
-		print("hurt...")
-		velocity=Vector2.ZERO
-		freeze=false
+
 
