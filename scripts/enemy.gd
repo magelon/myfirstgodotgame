@@ -3,9 +3,11 @@ extends "res://scripts/actor.gd"
 const cooldown=preload("res://scripts/cooldown.gd")
 
 onready var fist_cooldown=cooldown.new(1.5)
+onready var freeze_cooldown=cooldown.new(1.0)
 
 var state_machine
 var attacking
+var freeze
 var direction
 
 onready var eyeRay=get_node("Sprite").get_node("eyeRay")
@@ -17,6 +19,7 @@ func _ready() -> void:
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
 	attacking=false
+	freeze=false
 
 func _process(delta: float) -> void:
 	fist_cooldown.tick(delta)
@@ -93,8 +96,16 @@ func take_damage() -> void:
 	print(health)
 	state_machine.travel("hurt")
 	#freeze for a secon
+	freeze=true
+	freeze_cooldown.is_ready()
 	#then looking for player left or right
 	if health<=0:
 		print("die")
-		state_machine.travel("die")	
-	
+		state_machine.travel("die")
+		
+func gotHit()-> void:
+	if freeze and freeze_cooldown.is_ready():
+		print("hurt...")
+		velocity=Vector2.ZERO
+		freeze=false
+
