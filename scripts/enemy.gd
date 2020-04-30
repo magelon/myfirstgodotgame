@@ -58,7 +58,7 @@ func _on_fistHit_area_entered(area: Area2D) -> void:
 func enemyPatrol() -> void:
 	#raycast2d eye ray
 	#if enemy still alive
-	if (health>0 and !alert):
+	if (health>0):
 		# if enemy see something
 		if (eyeRay.is_colliding()):
 			print("seen something! it's"+str(eyeRay.get_collider().get_name()))
@@ -81,7 +81,17 @@ func enemyPatrol() -> void:
 					#go right
 					velocity.x=+speed.x
 				else:
-					velocity.x=-speed.x		
+					velocity.x=-speed.x
+		elif (!eyeRay.is_colliding() and alert):
+			#must be somthing at back
+			velocity=Vector2.ZERO
+			#turn arround if face left turn right otherwise flip
+			if direction=="left":
+				velocity.x=+speed.x
+				alert=false
+			else:
+				velocity.x=-speed.x
+				alert=false
 		else:
 			print("patroling...")
 			attacking=false
@@ -91,20 +101,7 @@ func enemyPatrol() -> void:
 				velocity.x=+speed.x
 			else:
 				velocity.x=-speed.x
-	#something hit me
-	elif (health>0 and alert):
-		#must be somthing at back
-		velocity=Vector2.ZERO
-		if (!eyeRay.is_colliding() 
-			or (eyeRay.is_colliding() 
-			and eyeRay.get_collider().get_name()!="PlayerKinematicBody2D")):
-			#turn arround if face left turn right otherwise flip
-			if direction=="left":
-				velocity.x=+speed.x
-				alert=false
-			else:
-				velocity.x=-speed.x
-				alert=false
+	
 				
 func take_damage() -> void:
 	print("Got hurt!")
