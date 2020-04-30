@@ -3,6 +3,7 @@ extends "res://scripts/actor.gd"
 const cooldown=preload("res://scripts/cooldown.gd")
 
 onready var fist_cooldown=cooldown.new(1.5)
+onready var jumpcd=cooldown.new(2.5)
 
 var state_machine
 var attacking
@@ -11,7 +12,6 @@ var alert
 var direction
 
 onready var eyeRay=get_node("Sprite").get_node("eyeRay")
-
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -23,6 +23,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	fist_cooldown.tick(delta)
+	jumpcd.tick(delta)
+	
 	velocity.y+=gravity*get_physics_process_delta_time()
 	
 	if velocity.x>0.0:
@@ -59,6 +61,7 @@ func enemyPatrol() -> void:
 	#raycast2d eye ray
 	#if enemy still alive
 	if (health>0):
+		randomJump()
 		# if enemy see something
 		if (eyeRay.is_colliding()):
 			print("seen something! it's"+str(eyeRay.get_collider().get_name()))
@@ -74,7 +77,7 @@ func enemyPatrol() -> void:
 					state_machine.travel("fistcombo")
 			#if enemy see other than player
 			else:
-				print("not player back to patrol...")	
+				print("not player can pass by jump back to patrol...")	
 				attacking=false
 				#if enemy facing right
 				if 	direction=="right":
@@ -116,5 +119,12 @@ func take_damage() -> void:
 		print("die")
 		state_machine.travel("die")
 		
-
+#jump at randum
+func randomJump()-> void:
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	if rng.randf_range(-10.0,10.0)>9.0 and jumpcd.is_ready():
+		velocity.y=-600
+	else:
+		velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y
 

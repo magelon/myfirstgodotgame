@@ -273,6 +273,7 @@ shape = SubResource( 35 )
 [node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
 position = Vector2( 0.200836, 0 )
 current = true
+offset_v = -1.0
 
 [node name="hurtbox" type="Area2D" parent="PlayerKinematicBody2D" groups=[
 "hurtbox",
