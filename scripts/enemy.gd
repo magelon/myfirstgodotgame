@@ -30,6 +30,28 @@ func _process(delta: float) -> void:
 		get_node("Sprite").set_scale(Vector2(-1,1))
 		direction="left"
 	
+	#patrol function	
+	enemyPatrol()
+	
+	if is_on_wall() :
+		velocity.x *=-1.0
+	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y	
+	
+	if !attacking:
+		if velocity.x!=0.0 and velocity.y==0.0 :
+				state_machine.travel("walk")
+		elif velocity.y!=0.0 :
+				state_machine.travel("jump")
+		elif health<=0:
+				state_machine.travel("die")	
+		elif velocity.x==0.0 and velocity.y==0.0 :
+				state_machine.travel("idle")	
+
+func _on_fistHit_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hurtbox"):
+		area.get_parent().take_damage()
+
+func enemyPatrol() -> void:
 	#raycast2d eye ray
 	#if enemy still alive
 	if (health>0):
@@ -64,24 +86,6 @@ func _process(delta: float) -> void:
 				velocity.x=+speed.x
 			else:
 				velocity.x=-speed.x
-			
-	if is_on_wall() :
-		velocity.x *=-1.0
-	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y	
-	
-	if !attacking:
-		if velocity.x!=0.0 and velocity.y==0.0 :
-				state_machine.travel("walk")
-		elif velocity.y!=0.0 :
-				state_machine.travel("jump")
-		elif health<=0:
-				state_machine.travel("die")	
-		elif velocity.x==0.0 and velocity.y==0.0 :
-				state_machine.travel("idle")	
-
-func _on_fistHit_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hurtbox"):
-		area.get_parent().take_damage()
 
 func take_damage() -> void:
 	print("hurt")
