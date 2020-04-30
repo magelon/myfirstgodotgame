@@ -88,14 +88,12 @@ func enemyPatrol() -> void:
 				velocity.x=-speed.x
 
 func take_damage() -> void:
-	print("hurt")
+	print("Got hurt!")
 	health=health-1
 	print(health)
 	state_machine.travel("hurt")
-	if fist_cooldown.is_ready() and health>0:
-		velocity.x=-speed.x
-	else:
-		velocity=Vector2.ZERO
+	#freeze for a secon
+	#then looking for player left or right
 	if health<=0:
 		print("die")
 		state_machine.travel("die")	
