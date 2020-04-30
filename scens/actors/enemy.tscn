@@ -240,6 +240,7 @@ speed = Vector2( 50, 1000 )
 texture = ExtResource( 4 )
 vframes = 16
 hframes = 16
+frame = 192
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="eyeRay" type="RayCast2D" parent="PlayerKinematicBody2D/Sprite"]

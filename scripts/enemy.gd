@@ -22,26 +22,6 @@ func _process(delta: float) -> void:
 	fist_cooldown.tick(delta)
 	velocity.y+=gravity*get_physics_process_delta_time()
 	
-	#raycast2d eye ray
-	if (eyeRay.is_colliding() 
-		and fist_cooldown.is_ready() 
-		and eyeRay.get_collider().get_name()
-		=="collidPlayerKinematicBoday2D"):
-		print("player detected start attacking")	
-		attacking=true
-		velocity=Vector2.ZERO
-		state_machine.travel("fistcombo")
-	else :
-		attacking=false
-		if 	direction=="right":
-			velocity.x=+speed.x
-		else:
-			velocity.x=-speed.x	
-	
-	if is_on_wall() :
-		velocity.x *=-1.0
-	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y	
-	
 	if velocity.x>0.0:
 		get_node("Sprite").set_scale(Vector2(1,1))
 		direction="right"
@@ -49,6 +29,45 @@ func _process(delta: float) -> void:
 	if velocity.x<0.0:
 		get_node("Sprite").set_scale(Vector2(-1,1))
 		direction="left"
+	
+	#raycast2d eye ray
+	#if enemy still alive
+	if (health>0):
+		# if enemy see something
+		if (eyeRay.is_colliding()):
+			print("seen something! it's"+str(eyeRay.get_collider().get_name()))
+			#stop and check
+			velocity=Vector2.ZERO
+			if(eyeRay.get_collider().get_name()=="PlayerKinematicBody2D"):
+				print("player detected!!")
+				#if enemy fist cooldown is ready
+				if fist_cooldown.is_ready():
+					print("attack...")
+					attacking=true
+					state_machine.travel("fistcombo")
+			#if enemy see other than player
+			else:
+				print("not player back to patrol...")	
+				attacking=false
+				#if enemy facing right
+				if 	direction=="right":
+					#go right
+					velocity.x=+speed.x
+				else:
+					velocity.x=-speed.x		
+		else:
+			print("patroling...")
+			attacking=false
+				#if enemy facing right
+			if 	direction=="right":
+					#go right
+				velocity.x=+speed.x
+			else:
+				velocity.x=-speed.x
+			
+	if is_on_wall() :
+		velocity.x *=-1.0
+	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y	
 	
 	if !attacking:
 		if velocity.x!=0.0 and velocity.y==0.0 :
