@@ -37,10 +37,11 @@ func _process(delta: float) -> void:
 		direction="left"
 													#the world only effect alive
 	if Input.get_action_strength("move_down")==1 and health>0:
-	#manully trigger timestop
-		pause_temporary(3)
-	
-	if !timeStop:
+		#manully trigger timestop
+		#have to be in a new script and extend node Engine.set_time_scale(0.5)
+		#pause_temporary(3)
+		pass
+	if !timeStop :
 	#patrol function
 		enemyPatrol()
 	

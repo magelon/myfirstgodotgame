@@ -4,6 +4,8 @@ const cooldown=preload("res://scripts/cooldown.gd")
 
 onready var fist_cooldown=cooldown.new(0.5)
 
+signal hpChanged(amount)
+
 var timeStop
 var state_machine
 
@@ -90,8 +92,11 @@ func take_damage() -> void:
 	if health<=0:
 		print("player died")
 		velocity=Vector2.ZERO
-		state_machine.travel("die")	
-
+		state_machine.travel("die")
+	else:
+		#change hp in hpbar
+		emit_signal("hpChanged",health)
+		
 func pause_temporary(seconds):
 	
 	state_machine.travel("timeStop")

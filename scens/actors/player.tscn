@@ -1,5 +1,6 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
+[ext_resource path="res://scens/actors/healthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
 [ext_resource path="res://sprites/cat/sprite_base_addon_2012_12_14 (1).png" type="Texture" id=4]
 
@@ -123,7 +124,7 @@ tracks/0/keys = {
 "values": [ 32, 39 ]
 }
 
-[sub_resource type="Animation" id=37]
+[sub_resource type="Animation" id=8]
 resource_name = "timeStop"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -138,7 +139,7 @@ tracks/0/keys = {
 "values": [ 192, 192 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -154,30 +155,26 @@ tracks/0/keys = {
 "values": [ 16, 23 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "fistcombo"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "hurt"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "timeStop"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
@@ -190,63 +187,67 @@ animation = "walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=28]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
 
-[sub_resource type="AnimationNodeStateMachine" id=32]
-states/die/node = SubResource( 9 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachine" id=37]
+states/die/node = SubResource( 10 )
 states/die/position = Vector2( 877, 221.6 )
-states/fistcombo/node = SubResource( 10 )
+states/fistcombo/node = SubResource( 11 )
 states/fistcombo/position = Vector2( 208, 230.6 )
-states/hurt/node = SubResource( 11 )
+states/hurt/node = SubResource( 12 )
 states/hurt/position = Vector2( 766, 26.6 )
-states/idle/node = SubResource( 12 )
+states/idle/node = SubResource( 13 )
 states/idle/position = Vector2( 313, 17 )
-states/jump/node = SubResource( 13 )
+states/jump/node = SubResource( 14 )
 states/jump/position = Vector2( 436, 157 )
-states/timeStop/node = SubResource( 38 )
+states/timeStop/node = SubResource( 15 )
 states/timeStop/position = Vector2( 768, 340.6 )
-states/walk/node = SubResource( 14 )
+states/walk/node = SubResource( 16 )
 states/walk/position = Vector2( 362, 366 )
-transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "idle", "fistcombo", SubResource( 19 ), "jump", "fistcombo", SubResource( 20 ), "walk", "fistcombo", SubResource( 21 ), "fistcombo", "idle", SubResource( 22 ), "idle", "hurt", SubResource( 23 ), "idle", "die", SubResource( 24 ), "walk", "hurt", SubResource( 25 ), "walk", "die", SubResource( 26 ), "hurt", "idle", SubResource( 27 ), "jump", "hurt", SubResource( 28 ), "jump", "die", SubResource( 29 ), "hurt", "die", SubResource( 30 ), "jump", "idle", SubResource( 31 ), "jump", "timeStop", SubResource( 39 ), "walk", "timeStop", SubResource( 40 ), "idle", "timeStop", SubResource( 41 ) ]
+transitions = [ "idle", "walk", SubResource( 17 ), "idle", "jump", SubResource( 18 ), "walk", "jump", SubResource( 19 ), "walk", "idle", SubResource( 20 ), "idle", "fistcombo", SubResource( 21 ), "jump", "fistcombo", SubResource( 22 ), "walk", "fistcombo", SubResource( 23 ), "fistcombo", "idle", SubResource( 24 ), "idle", "hurt", SubResource( 25 ), "idle", "die", SubResource( 26 ), "walk", "hurt", SubResource( 27 ), "walk", "die", SubResource( 28 ), "hurt", "idle", SubResource( 29 ), "jump", "hurt", SubResource( 30 ), "jump", "die", SubResource( 31 ), "hurt", "die", SubResource( 32 ), "jump", "idle", SubResource( 33 ), "jump", "timeStop", SubResource( 34 ), "walk", "timeStop", SubResource( 35 ), "idle", "timeStop", SubResource( 36 ) ]
 graph_offset = Vector2( -149, -29.4 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 resource_local_to_scene = false
 
-[sub_resource type="RectangleShape2D" id=34]
+[sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 3.93967, 3.05577 )
 
-[sub_resource type="RectangleShape2D" id=35]
+[sub_resource type="RectangleShape2D" id=40]
 extents = Vector2( 6.00354, 12.388 )
 
-[sub_resource type="RectangleShape2D" id=36]
+[sub_resource type="RectangleShape2D" id=41]
 extents = Vector2( 13.5402, 13.9648 )
 
 [node name="player" type="Node2D"]
@@ -274,15 +275,15 @@ anims/fistcombo = SubResource( 4 )
 anims/hurt = SubResource( 5 )
 anims/idle = SubResource( 6 )
 anims/jump = SubResource( 7 )
-anims/timeStop = SubResource( 37 )
-anims/walk = SubResource( 8 )
+anims/timeStop = SubResource( 8 )
+anims/walk = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerKinematicBody2D/Sprite"]
-tree_root = SubResource( 32 )
+tree_root = SubResource( 37 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 root_motion_track = NodePath(".:frame")
-parameters/playback = SubResource( 33 )
+parameters/playback = SubResource( 38 )
 
 [node name="fistHit" type="Area2D" parent="PlayerKinematicBody2D/Sprite"]
 position = Vector2( 0.817963, -1.54878 )
@@ -290,12 +291,12 @@ collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/Sprite/fistHit"]
 position = Vector2( 12.6815, 10.3217 )
-shape = SubResource( 34 )
+shape = SubResource( 39 )
 disabled = true
 
 [node name="CollisionShape2DplayerBody" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
 position = Vector2( -1.66125, 9.48254 )
-shape = SubResource( 35 )
+shape = SubResource( 40 )
 
 [node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
 position = Vector2( 0.200836, 0 )
@@ -309,5 +310,13 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKinematicBody2D/hurtbox"]
 position = Vector2( -1.76789, 8.30125 )
-shape = SubResource( 36 )
+shape = SubResource( 41 )
+
+[node name="Control" parent="PlayerKinematicBody2D" instance=ExtResource( 1 )]
+margin_left = -16.6862
+margin_top = -18.191
+margin_right = 23.3138
+margin_bottom = 21.809
+rect_scale = Vector2( 0.118625, 0.181967 )
+[connection signal="hpChanged" from="PlayerKinematicBody2D" to="PlayerKinematicBody2D/Control" method="_on_PlayerKinematicBody2D_hpChanged"]
 [connection signal="area_entered" from="PlayerKinematicBody2D/Sprite/fistHit" to="PlayerKinematicBody2D" method="_on_fistHit_area_entered"]
