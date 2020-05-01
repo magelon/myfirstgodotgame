@@ -4,12 +4,12 @@ const cooldown=preload("res://scripts/cooldown.gd")
 
 onready var fist_cooldown=cooldown.new(0.5)
 
+var timeStop
 var state_machine
 
 func _ready() -> void:
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
-
 
 	#it will run parent physics process as well
 func _process(delta: float) -> void:
@@ -39,12 +39,15 @@ func _process(delta: float) -> void:
 			print("hp: "+str(health))
 			state_machine.travel("fistcombo")
 	elif Input.get_action_strength("move_down")==1 and health>0:
-			state_machine.travel("die")
-	elif velocity.x!=0.0 and velocity.y==0.0 :
+			#pause_temporary(3)
+			print("The world!")
+	elif velocity.x!=0.0 and velocity.y==0.0 and !timeStop:
 			state_machine.travel("walk")
-	elif velocity.y!=0.0 :
+	elif velocity.y!=0.0 and !timeStop:
 			state_machine.travel("jump")
-	elif (velocity.x==0.0 and velocity.y==0.0 and 
+	elif (velocity.x==0.0 and 
+			velocity.y==0.0 and
+			!timeStop and 
 			Input.get_action_strength("move_down")!=1
 			and health>0):
 			state_machine.travel("idle")	
@@ -88,3 +91,19 @@ func take_damage() -> void:
 		print("player died")
 		velocity=Vector2.ZERO
 		state_machine.travel("die")	
+
+func pause_temporary(seconds):
+	
+	state_machine.travel("timeStop")
+	
+	set_process(false)
+	timeStop=true
+	
+	print("stop time")
+	yield(get_tree().create_timer(seconds), "timeout")
+	print("time restart")
+	timeStop=false
+	#get_node("Sprite/AnimationPlayer").set_active(true)
+	
+	set_process(true)
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
 [ext_resource path="res://sprites/cat/sprite_base_addon_2012_12_14 (1).png" type="Texture" id=4]
@@ -123,6 +123,21 @@ tracks/0/keys = {
 "values": [ 32, 39 ]
 }
 
+[sub_resource type="Animation" id=37]
+resource_name = "timeStop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 192, 192 ]
+}
+
 [sub_resource type="Animation" id=8]
 length = 0.5
 loop = true
@@ -153,6 +168,9 @@ animation = "idle"
 
 [sub_resource type="AnimationNodeAnimation" id=13]
 animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "timeStop"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
 animation = "walk"
@@ -195,6 +213,12 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
 [sub_resource type="AnimationNodeStateMachine" id=32]
 states/die/node = SubResource( 9 )
 states/die/position = Vector2( 877, 221.6 )
@@ -206,10 +230,12 @@ states/idle/node = SubResource( 12 )
 states/idle/position = Vector2( 313, 17 )
 states/jump/node = SubResource( 13 )
 states/jump/position = Vector2( 436, 157 )
+states/timeStop/node = SubResource( 38 )
+states/timeStop/position = Vector2( 768, 340.6 )
 states/walk/node = SubResource( 14 )
 states/walk/position = Vector2( 362, 366 )
-transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "idle", "fistcombo", SubResource( 19 ), "jump", "fistcombo", SubResource( 20 ), "walk", "fistcombo", SubResource( 21 ), "fistcombo", "idle", SubResource( 22 ), "idle", "hurt", SubResource( 23 ), "idle", "die", SubResource( 24 ), "walk", "hurt", SubResource( 25 ), "walk", "die", SubResource( 26 ), "hurt", "idle", SubResource( 27 ), "jump", "hurt", SubResource( 28 ), "jump", "die", SubResource( 29 ), "hurt", "die", SubResource( 30 ), "jump", "idle", SubResource( 31 ) ]
-graph_offset = Vector2( -324, 1.60001 )
+transitions = [ "idle", "walk", SubResource( 15 ), "idle", "jump", SubResource( 16 ), "walk", "jump", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "idle", "fistcombo", SubResource( 19 ), "jump", "fistcombo", SubResource( 20 ), "walk", "fistcombo", SubResource( 21 ), "fistcombo", "idle", SubResource( 22 ), "idle", "hurt", SubResource( 23 ), "idle", "die", SubResource( 24 ), "walk", "hurt", SubResource( 25 ), "walk", "die", SubResource( 26 ), "hurt", "idle", SubResource( 27 ), "jump", "hurt", SubResource( 28 ), "jump", "die", SubResource( 29 ), "hurt", "die", SubResource( 30 ), "jump", "idle", SubResource( 31 ), "jump", "timeStop", SubResource( 39 ), "walk", "timeStop", SubResource( 40 ), "idle", "timeStop", SubResource( 41 ) ]
+graph_offset = Vector2( -149, -29.4 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 resource_local_to_scene = false
@@ -248,6 +274,7 @@ anims/fistcombo = SubResource( 4 )
 anims/hurt = SubResource( 5 )
 anims/idle = SubResource( 6 )
 anims/jump = SubResource( 7 )
+anims/timeStop = SubResource( 37 )
 anims/walk = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerKinematicBody2D/Sprite"]

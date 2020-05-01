@@ -7,6 +7,7 @@ onready var jumpcd=cooldown.new(2.5)
 
 var state_machine
 var attacking
+var timeStop
 #possible danger
 var alert
 var direction
@@ -34,16 +35,21 @@ func _process(delta: float) -> void:
 	if velocity.x<0.0:
 		get_node("Sprite").set_scale(Vector2(-1,1))
 		direction="left"
+													#the world only effect alive
+	if Input.get_action_strength("move_down")==1 and health>0:
+	#manully trigger timestop
+		pause_temporary(3)
 	
+	if !timeStop:
 	#patrol function
-	enemyPatrol()
+		enemyPatrol()
 	
 	if is_on_wall() :
 		velocity.x *=-1.0
 	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y
 	
 	#if enemy is not attacking
-	if !attacking:
+	if !attacking and !timeStop:
 		if velocity.x!=0.0 and velocity.y==0.0 :
 				state_machine.travel("walk")
 		elif velocity.y!=0.0 :
@@ -96,7 +102,7 @@ func enemyPatrol() -> void:
 				velocity.x=-speed.x
 				alert=false
 		else:
-			print("patroling...")
+			#print("patroling...")
 			attacking=false
 				#if enemy facing right
 			if 	direction=="right":
@@ -128,3 +134,18 @@ func randomJump()-> void:
 	else:
 		velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y
 
+func pause_temporary(seconds):
+	
+	state_machine.travel("timeStop")
+	
+	set_process(false)
+	timeStop=true
+	
+	print("stop time")
+	yield(get_tree().create_timer(seconds), "timeout")
+	print("time restart")
+	timeStop=false
+	#get_node("Sprite/AnimationPlayer").set_active(true)
+	
+	set_process(true)
+	
