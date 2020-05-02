@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://tiles/dirtTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://scens/actors/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scens/actors/enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scens/actors/enemy2.tscn" type="PackedScene" id=4]
 
 [node name="world" type="Node2D"]
 
@@ -22,8 +21,4 @@ scale = Vector2( 2, 2 )
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 684.639, 173.233 )
-scale = Vector2( 2, 2 )
-
-[node name="enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 220.623, 117.089 )
 scale = Vector2( 2, 2 )

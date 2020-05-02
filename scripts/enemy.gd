@@ -1,3 +1,5 @@
+#enemy scens can not been used duplicate in same scene
+#need multiple enemy in actor scens
 extends "res://scripts/actor.gd"
 
 const cooldown=preload("res://scripts/cooldown.gd")
@@ -41,6 +43,7 @@ func _process(delta: float) -> void:
 		#have to be in a new script and extend node Engine.set_time_scale(0.5)
 		#pause_temporary(3)
 		pass
+		#if time is not stoped ai keep patrolling
 	if !timeStop :
 	#patrol function
 		enemyPatrol()
@@ -49,7 +52,7 @@ func _process(delta: float) -> void:
 		velocity.x *=-1.0
 	velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y
 	
-	#if enemy is not attacking
+	#if enemy is not attacking and time is not stoped
 	if !attacking and !timeStop:
 		if velocity.x!=0.0 and velocity.y==0.0 :
 				state_machine.travel("walk")
@@ -136,17 +139,13 @@ func randomJump()-> void:
 		velocity.y=move_and_slide(velocity,FLOOR_NORMAL).y
 
 func pause_temporary(seconds):
-	
 	state_machine.travel("timeStop")
-	
 	set_process(false)
 	timeStop=true
-	
 	print("stop time")
 	yield(get_tree().create_timer(seconds), "timeout")
 	print("time restart")
 	timeStop=false
 	#get_node("Sprite/AnimationPlayer").set_active(true)
-	
 	set_process(true)
 	

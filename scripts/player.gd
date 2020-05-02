@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 	elif Input.get_action_strength("move_down")==1 and health>0:
 			#pause_temporary(3)
 			print("The world!")
+			state_machine.travel("squat")
 	elif velocity.x!=0.0 and velocity.y==0.0 and !timeStop:
 			state_machine.travel("walk")
 	elif velocity.y!=0.0 and !timeStop:
