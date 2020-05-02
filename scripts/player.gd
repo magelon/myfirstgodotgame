@@ -8,10 +8,12 @@ signal hpChanged(amount)
 
 var timeStop
 var state_machine
+var coins
 
 func _ready() -> void:
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
+	coins=0
 
 	#it will run parent physics process as well
 func _process(delta: float) -> void:
@@ -113,3 +115,6 @@ func pause_temporary(seconds):
 	
 	set_process(true)
 	
+func getCoin() -> void:
+	coins=coins+1
+	print(coins)
