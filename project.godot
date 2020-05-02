@@ -24,6 +24,10 @@ config/name="firstgame"
 run/main_scene="res://scens/actors/player.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerStates="*res://scripts/playerStates.gd"
+
 [input]
 
 move_right={
