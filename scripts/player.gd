@@ -9,11 +9,13 @@ signal hpChanged(amount)
 var timeStop
 var state_machine
 var coins
+var hp
 
 func _ready() -> void:
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
-	coins=0
+	coins=PlayerStates.coins
+	hp=PlayerStates.hp
 
 	#it will run parent physics process as well
 func _process(delta: float) -> void:
@@ -39,10 +41,10 @@ func _process(delta: float) -> void:
 	velocity=move_and_slide(velocity,FLOOR_NORMAL)
 	
 	#switch between different attacks or actions
-	if Input.is_action_just_pressed("attack1") and fist_cooldown.is_ready() and health>0:
-			print("hp: "+str(health))
+	if Input.is_action_just_pressed("attack1") and fist_cooldown.is_ready() and hp>0:
+			print("hp: "+str(hp))
 			state_machine.travel("fistcombo")
-	elif Input.get_action_strength("move_down")==1 and health>0:
+	elif Input.get_action_strength("move_down")==1 and hp>0:
 			#pause_temporary(3)
 			print("The world!")
 			state_machine.travel("squat")
@@ -54,16 +56,16 @@ func _process(delta: float) -> void:
 			velocity.y==0.0 and
 			!timeStop and 
 			Input.get_action_strength("move_down")!=1
-			and health>0):
+			and hp>0):
 			state_machine.travel("idle")	
-	elif health<=0:
+	elif hp<=0:
 			state_machine.travel("die")	
 	
 func get_direction() -> Vector2:
 		return Vector2(	 
 				#get input action function return 1 if get action
-				Input.get_action_strength("move_right")-Input.get_action_strength("move_left") if health>0 else 0,
-				-1.0 if Input.is_action_just_pressed("move_up") and is_on_floor() and health>0 else 1.0 
+				Input.get_action_strength("move_right")-Input.get_action_strength("move_left") if hp>0 else 0,
+				-1.0 if Input.is_action_just_pressed("move_up") and is_on_floor() and hp>0 else 1.0 
 		)
 
 func calculate_move_velocity(
@@ -90,15 +92,17 @@ func _on_fistHit_area_entered(area: Area2D) -> void:
 
 func take_damage() -> void:
 	print("player take damage")
-	health=health-1
+	hp=hp-1
+	#update health globally
+	PlayerStates.hp=hp
 	state_machine.travel("hurt")
-	if health<=0:
+	if hp<=0:
 		print("player died")
 		velocity=Vector2.ZERO
 		state_machine.travel("die")
 	else:
 		#change hp in hpbar
-		emit_signal("hpChanged",health)
+		emit_signal("hpChanged",hp)
 		
 func pause_temporary(seconds):
 	
@@ -117,4 +121,6 @@ func pause_temporary(seconds):
 	
 func getCoin() -> void:
 	coins=coins+1
+	#update coins
+	PlayerStates.coins=coins
 	print(coins)
