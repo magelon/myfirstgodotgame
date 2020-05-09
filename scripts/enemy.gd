@@ -118,6 +118,7 @@ func enemyPatrol() -> void:
 				
 func take_damage() -> void:
 	print("Got hurt!")
+	pause_temporary(0.5)
 	health=health-1
 	print(health)
 	state_machine.travel("hurt")
@@ -128,6 +129,8 @@ func take_damage() -> void:
 	if health<=0:
 		print("die")
 		state_machine.travel("die")
+		pause_temporary(2)
+		get_tree().reload_current_scene()
 		
 #jump at randum
 func randomJump()-> void:
