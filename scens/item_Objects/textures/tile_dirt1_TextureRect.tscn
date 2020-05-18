@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scens/item_Objects/items/dirt_tile1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scens/editor_Folder/item_TextureRect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/sprites1/dirt_tile1.png" type="Texture" id=3]
+
+[node name="TextureRect" instance=ExtResource( 2 )]
+margin_right = 17.0
+margin_bottom = 17.0
+texture = ExtResource( 3 )
+this_scene = ExtResource( 1 )

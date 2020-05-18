@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scens/item_Objects/entity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scens/editor_Folder/item_entity.tscn" type="PackedScene" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
