@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scens/actors/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scens/editor_Folder/item_TextureRect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/cat/cat_texture.png" type="Texture" id=3]
+
+[node name="TextureRect" instance=ExtResource( 2 )]
+texture = ExtResource( 3 )
+this_scene = ExtResource( 1 )

@@ -1,6 +1,6 @@
 extends Node2D
 
-var can_place=true
+var can_place=false
 onready var level=get_node("/root/main/level")
 
 var current_item
