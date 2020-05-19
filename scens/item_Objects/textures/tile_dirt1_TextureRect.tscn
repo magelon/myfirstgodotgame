@@ -7,5 +7,6 @@
 [node name="TextureRect" instance=ExtResource( 2 )]
 margin_right = 17.0
 margin_bottom = 17.0
+rect_scale = Vector2( 5, 5 )
 texture = ExtResource( 3 )
 this_scene = ExtResource( 1 )
