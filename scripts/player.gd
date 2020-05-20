@@ -19,7 +19,7 @@ func _ready() -> void:
 
 	#it will run parent physics process as well
 func _process(delta: float) -> void:
-	
+	set_process(!Global.playing)
 	#timer delta is the time between every frame
 	fist_cooldown.tick(delta)
 	

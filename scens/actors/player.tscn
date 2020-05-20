@@ -284,7 +284,7 @@ extents = Vector2( 6.00354, 12.388 )
 extents = Vector2( 13.5402, 13.9648 )
 
 [node name="player" type="Node2D"]
-position = Vector2( 660.146, 468.707 )
+position = Vector2( 480.771, 351.515 )
 scale = Vector2( 2.55588, 2.69968 )
 script = ExtResource( 2 )
 
@@ -334,7 +334,7 @@ position = Vector2( -1.66125, 9.48254 )
 shape = SubResource( 48 )
 
 [node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
-position = Vector2( 0.200836, 0 )
+position = Vector2( 9.55832, 12.4027 )
 current = true
 offset_v = -1.0
 
