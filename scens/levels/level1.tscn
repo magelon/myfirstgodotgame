@@ -6,9 +6,9 @@
 [ext_resource path="res://scens/objects_Tmp/coin.tscn" type="PackedScene" id=4]
 
 [node name="world" type="Node2D"]
+scale = Vector2( 5, 5 )
 
 [node name="TileMap" type="TileMap" parent="."]
-scale = Vector2( 5, 5 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 11
@@ -17,12 +17,12 @@ format = 1
 tile_data = PoolIntArray( 0, 41, 0, 12, 27, 0, 65536, 41, 0, 65548, 27, 0, 131072, 41, 0, 131084, 27, 0, 196608, 41, 0, 196620, 27, 0, 262144, 41, 0, 262150, 0, 0, 262156, 27, 0, 327680, 30, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 29, 0, 327692, 30, 0, 393216, 30, 0, 393217, 30, 0, 393218, 30, 0, 393219, 30, 0, 393220, 30, 0, 393221, 30, 0, 393222, 30, 0, 393223, 30, 0, 393224, 30, 0, 393225, 30, 0, 393226, 30, 0, 393227, 30, 0, 393228, 30, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 479.181, 204.529 )
-scale = Vector2( 2, 2 )
+position = Vector2( 64.4224, 30.8265 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 684.639, 173.233 )
-scale = Vector2( 2, 2 )
+position = Vector2( 143.638, 23.2327 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="coin" parent="." instance=ExtResource( 4 )]
 position = Vector2( 560.298, 174.169 )
