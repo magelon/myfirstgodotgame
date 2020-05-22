@@ -1,6 +1,6 @@
 extends Node2D
 
-var can_place=false
+var can_place=true
 var is_panning=true
 onready var level=get_node("/root/main/level")
 onready var editor=get_node("/root/main/cam_container")

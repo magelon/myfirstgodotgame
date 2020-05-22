@@ -11,7 +11,7 @@ func _ready() -> void:
 	connect("gui_input",self,"_item_clicked")
 	pass
 	
-func _item_clicked(event):	
+func _item_clicked(event):
 	if(event is InputEvent):
 		if(!tile):
 			if(event.is_action_pressed("mb_left")):
