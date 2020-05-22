@@ -12,11 +12,13 @@ func _process(delta: float) -> void:
 	pass	
 
 func _on_TabContainer_mouse_entered():
+	#print("tab enter!")
 	object_cursor.can_place=false
 	object_cursor.hide()
 	pass
 
 func _on_TabContainer_mouse_exited():
+	#print("tab exited!")
 	object_cursor.can_place=true
 	object_cursor.show()
 	pass
