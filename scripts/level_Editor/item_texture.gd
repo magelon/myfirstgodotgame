@@ -22,5 +22,5 @@ func _item_clicked(event):
 			if(event.is_action_pressed("mb_left")):
 				Global.place_tile=true
 				Global.current_tile=tile_id
-				cursor_sprite.texture=null
+				cursor_sprite.texture=texture
 		pass		
