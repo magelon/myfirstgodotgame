@@ -292,6 +292,11 @@ position = Vector2( 2.24257, -10.6703 )
 collision_mask = 10
 script = ExtResource( 3 )
 
+[node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
+position = Vector2( 9.55832, 12.4027 )
+current = true
+offset_v = -1.0
+
 [node name="Sprite" type="Sprite" parent="PlayerKinematicBody2D"]
 texture = ExtResource( 4 )
 vframes = 16
@@ -331,11 +336,6 @@ disabled = true
 [node name="CollisionShape2DplayerBody" type="CollisionShape2D" parent="PlayerKinematicBody2D"]
 position = Vector2( -1.66125, 9.48254 )
 shape = SubResource( 48 )
-
-[node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
-position = Vector2( 9.55832, 12.4027 )
-current = true
-offset_v = -1.0
 
 [node name="hurtbox" type="Area2D" parent="PlayerKinematicBody2D" groups=[
 "hurtbox",

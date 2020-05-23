@@ -16,10 +16,14 @@ func _ready() -> void:
 	state_machine.start("idle")
 	coins=PlayerStates.coins
 	hp=PlayerStates.hp
+	#cam.current=false
 
 	#it will run parent physics process as well
 func _process(delta: float) -> void:
 	#set_process(!Global.playing)
+	#if(Global.playing):
+		#var cam=get_node("/root/main/level/player/PlayerKinematicB/Camera2D")
+		#cam.current=true
 	#timer delta is the time between every frame
 	fist_cooldown.tick(delta)
 	

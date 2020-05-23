@@ -16,7 +16,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	#editor_cam.current=!Global.playing
+	editor_cam.current=!Global.playing
 	global_position=get_global_mouse_position()
 	
 	if !Global.place_tile:

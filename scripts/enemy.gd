@@ -14,15 +14,19 @@ var timeStop
 var alert
 var direction
 
+
+
 onready var eyeRay=get_node("Sprite").get_node("eyeRay")
 
 func _ready() -> void:
 	set_physics_process(false)
+	
 	velocity.x=-speed.x
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
 	attacking=false
 	alert=false
+	
 
 func _process(delta: float) -> void:
 	fist_cooldown.tick(delta)
@@ -71,7 +75,7 @@ func enemyPatrol() -> void:
 	#raycast2d eye ray
 	#if enemy still alive
 	if (health>0):
-		randomJump()
+		#randomJump()
 		# if enemy see something
 		if (eyeRay.is_colliding()):
 			print("seen something! it's"+str(eyeRay.get_collider().get_name()))

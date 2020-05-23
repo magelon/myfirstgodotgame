@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemyActivation.gd" type="Script" id=2]
 [ext_resource path="res://sprites/cat/sprite_base_addon_2012_12_14 (1).png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -253,6 +254,7 @@ extents = Vector2( 11.9431, 13.9648 )
 
 [node name="enemy" type="Node2D"]
 position = Vector2( 660.146, 468.707 )
+script = ExtResource( 2 )
 
 [node name="PlayerKinematicBody2D" type="KinematicBody2D" parent="."]
 position = Vector2( 2.24257, -10.6703 )

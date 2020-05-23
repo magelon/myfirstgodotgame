@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scens/editor_Folder/item_select_Tabs.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/level_Editor/Editor_Object.gd" type="Script" id=2]
 [ext_resource path="res://tiles/dirtTileSet.tres" type="TileSet" id=3]
+[ext_resource path="res://scens/actors/enemy.tscn" type="PackedScene" id=4]
 
 [node name="main" type="Node2D"]
 
@@ -11,7 +12,10 @@
 [node name="TileMap" type="TileMap" parent="level"]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 8
+collision_mask = 2
 format = 1
+tile_data = PoolIntArray( 983054, 0, 0, 983055, 0, 0, 983056, 0, 0 )
 
 [node name="Editor_Object" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -24,3 +28,6 @@ script = ExtResource( 2 )
 position = Vector2( 513.858, 296.569 )
 
 [node name="Camera2D" type="Camera2D" parent="cam_container"]
+
+[node name="enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 252.825, 229.209 )

@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scens/item_Objects/textures/tile_dirt1_TextureRect.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scens/item_Objects/textures/player_cat_TextureRect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/level_Editor/TabContainer.gd" type="Script" id=3]
 [ext_resource path="res://scripts/level_Editor/ScrollContainer.gd" type="Script" id=4]
-[ext_resource path="res://scens/actors/playerScale.tscn" type="PackedScene" id=5]
 
 [node name="Item_Select" type="CanvasLayer"]
 
@@ -19,6 +17,7 @@ __meta__ = {
 }
 
 [node name="tiles2" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -34,20 +33,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/tiles2/ScrollContainer"]
-margin_right = 59.0
-margin_bottom = 64.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/tiles2/ScrollContainer/VBoxContainer"]
-margin_right = 59.0
-margin_bottom = 64.0
-
-[node name="TextureRect" parent="TabContainer/tiles2/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
-margin_right = 59.0
-margin_bottom = 64.0
-this_scene = ExtResource( 5 )
 
 [node name="tiles" type="Tabs" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
