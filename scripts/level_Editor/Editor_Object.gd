@@ -30,7 +30,8 @@ func _process(delta: float) -> void:
 				place_tile()
 			if Input.is_action_pressed("mb_right"):
 				remove_tile()
-	move_editor()
+	if(!Global.playing):
+		move_editor()
 	is_panning=Input.is_action_pressed("mb_middle")
 	pass
 
