@@ -3,7 +3,7 @@
 [ext_resource path="res://scens/editor_Folder/item_select_Tabs.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/level_Editor/Editor_Object.gd" type="Script" id=2]
 [ext_resource path="res://tiles/dirtTileSet.tres" type="TileSet" id=3]
-[ext_resource path="res://scens/actors/enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scens/actors/playerScale.tscn" type="PackedScene" id=4]
 
 [node name="main" type="Node2D"]
 
@@ -29,5 +29,5 @@ position = Vector2( 513.858, 296.569 )
 
 [node name="Camera2D" type="Camera2D" parent="cam_container"]
 
-[node name="enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 412.826, 343.946 )
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 414.652, 298.301 )

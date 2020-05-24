@@ -14,8 +14,8 @@ var hp
 func _ready() -> void:
 	state_machine=$Sprite/AnimationTree.get("parameters/playback")
 	state_machine.start("idle")
-	coins=PlayerStates.coins
-	hp=PlayerStates.hp
+	#coins=PlayerStates.coins
+	hp=10
 	#cam.current=false
 
 	#it will run parent physics process as well
@@ -98,7 +98,7 @@ func take_damage() -> void:
 	print("player take damage")
 	hp=hp-1
 	#update health globally
-	PlayerStates.hp=hp
+	#PlayerStates.hp=hp
 	state_machine.travel("hurt")
 	if hp<=0:
 		print("player died")
@@ -126,5 +126,5 @@ func pause_temporary(seconds):
 func getCoin() -> void:
 	coins=coins+1
 	#update coins
-	PlayerStates.coins=coins
+	#PlayerStates.coins=coins
 	print(coins)

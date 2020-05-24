@@ -26,7 +26,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-PlayerStates="*res://scripts/playerStates.gd"
 Global="*res://scripts/level_Editor/Global.gd"
 
 [input]
