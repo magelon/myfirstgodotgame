@@ -15,7 +15,7 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 8
 collision_mask = 2
 format = 1
-tile_data = PoolIntArray( 983054, 0, 0, 983055, 0, 0, 983056, 0, 0 )
+tile_data = PoolIntArray( 1376279, 39, 0, 1376285, 24, 0, 1441815, 30, 0, 1441816, 5, 0, 1441817, 5, 0, 1441818, 5, 0, 1441819, 5, 0, 1441820, 5, 0, 1441821, 30, 0, 1507351, 30, 0, 1507352, 30, 0, 1507353, 8, 0, 1507354, 30, 0, 1507355, 30, 0, 1507356, 30, 0, 1507357, 30, 0, 1572887, 30, 0, 1572888, 30, 0, 1572889, 30, 0, 1572890, 30, 0, 1572891, 8, 0, 1572892, 30, 0, 1572893, 30, 0 )
 
 [node name="Editor_Object" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -30,4 +30,4 @@ position = Vector2( 513.858, 296.569 )
 [node name="Camera2D" type="Camera2D" parent="cam_container"]
 
 [node name="enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 252.825, 229.209 )
+position = Vector2( 412.826, 343.946 )
